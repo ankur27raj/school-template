@@ -3,6 +3,7 @@
 .whyChooseUs {
   @include section-padding;
   background-color: $gray-50;
+  overflow: hidden;
 }
 
 .container {

@@ -3,6 +3,7 @@
 .academics {
   @include section-padding;
   background-color: $white;
+  overflow: hidden;
 }
 
 .container {
@@ -107,10 +108,14 @@
   background-color: $gray-50;
   border: 1px solid $gray-200;
   border-radius: $radius-lg;
-  padding: $spacing-lg;
+  padding: $spacing-sm;
   text-align: center;
   transition: all $transition-normal;
   box-shadow: $shadow-sm;
+
+  @include md {
+    padding: $spacing-lg;
+  }
 
   &:hover {
     transform: translateY(-5px);

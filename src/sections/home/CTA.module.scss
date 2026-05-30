@@ -3,6 +3,7 @@
 .cta {
   @include section-padding;
   background-color: $white;
+  overflow: hidden;
 }
 
 .container {
