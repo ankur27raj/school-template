@@ -1,0 +1,193 @@
+@import '../../styles/theme';
+
+.section {
+  @include section-padding;
+  background-color: $white;
+}
+
+.container {
+  @include container;
+}
+
+// Gallery Grid
+.galleryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+  
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+  }
+}
+
+.galleryCard {
+  position: relative;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  cursor: pointer;
+  background-color: $gray-100;
+  @include aspect-ratio(4, 3);
+  transition: all $transition-normal;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+
+    .image {
+      transform: scale(1.06);
+    }
+
+    .overlay {
+      opacity: 1;
+    }
+  }
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform $transition-slow;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba($primary-dark, 0.8) 0%, rgba($primary-dark, 0.2) 100%);
+  opacity: 0;
+  z-index: 2;
+  transition: opacity $transition-normal;
+  @include flex-column;
+  justify-content: flex-end;
+  padding: $spacing-lg;
+  color: $white;
+}
+
+.cardTitle {
+  font-family: $font-serif;
+  font-size: $font-size-md;
+  font-weight: $weight-bold;
+  margin: 0;
+}
+
+.cardCategory {
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  color: $secondary-light;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: $weight-semibold;
+}
+
+// Lightbox Modal Overlay
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($primary-dark, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: $z-modal;
+  @include flex-center;
+}
+
+.lightboxContent {
+  position: relative;
+  max-width: 90%;
+  max-height: 80%;
+  @include flex-column;
+  align-items: center;
+  gap: $spacing-md;
+  color: $white;
+}
+
+.lightboxImageWrapper {
+  position: relative;
+  width: 80vw;
+  height: 60vh;
+  max-width: 960px;
+  max-height: 600px;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-xl;
+  background-color: $primary-color;
+}
+
+.lightboxImage {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.captionBlock {
+  text-align: center;
+  
+  .lightboxTitle {
+    font-family: $font-serif;
+    font-size: $font-size-lg;
+    font-weight: $weight-bold;
+    margin-bottom: 2px;
+  }
+  
+  .lightboxCategory {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    color: $secondary-light;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+// Navigation Controls
+.closeBtn {
+  @include button-reset;
+  position: absolute;
+  top: $spacing-xl;
+  right: $spacing-xl;
+  color: $white;
+  transition: opacity $transition-fast;
+  z-index: 10;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.navBtn {
+  @include button-reset;
+  @include flex-center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $white;
+  background-color: rgba($white, 0.05);
+  border: 1px solid rgba($white, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: $radius-round;
+  transition: all $transition-fast;
+  z-index: 10;
+
+  &:hover {
+    background-color: $white;
+    color: $primary-color;
+  }
+
+  &.prev {
+    left: $spacing-xl;
+  }
+
+  &.next {
+    right: $spacing-xl;
+  }
+}

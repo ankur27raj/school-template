@@ -1,0 +1,246 @@
+@import '../../styles/theme';
+
+.noticesEvents {
+  @include section-padding;
+  background-color: $gray-50;
+}
+
+.container {
+  @include container;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+
+  @include lg {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: $spacing-3xl;
+  }
+}
+
+.column {
+  @include flex-column;
+  gap: $spacing-lg;
+}
+
+.columnHeader {
+  @include flex-between;
+  border-bottom: 2px solid $gray-200;
+  padding-bottom: $spacing-sm;
+  margin-bottom: $spacing-xs;
+
+  .heading {
+    font-family: $font-serif;
+    font-size: $font-size-xl;
+    color: $primary-color;
+    margin: 0;
+  }
+
+  .viewAll {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    font-weight: $weight-bold;
+    color: $secondary-color;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    
+    svg {
+      transition: transform $transition-fast;
+    }
+
+    &:hover {
+      color: $secondary-dark;
+      
+      svg {
+        transform: translateX(2px);
+      }
+    }
+  }
+}
+
+// Stack of Notices
+.noticesStack {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.noticeCard {
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  transition: all $transition-normal;
+  @include flex-column;
+  gap: $spacing-xs;
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-md;
+    border-color: rgba($primary-color, 0.15);
+  }
+
+  &.important {
+    border-left: 4px solid $error;
+  }
+}
+
+.noticeMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .date {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    color: $gray-400;
+  }
+  
+  .categoryBadge {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    font-weight: $weight-bold;
+    color: $secondary-color;
+    background-color: rgba($secondary-color, 0.05);
+    padding: 2px $spacing-xs;
+    border-radius: $radius-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .importantBadge {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    font-weight: $weight-bold;
+    color: $error;
+    background-color: rgba($error, 0.05);
+    padding: 2px $spacing-xs;
+    border-radius: $radius-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.noticeTitle {
+  font-family: $font-serif;
+  font-size: $font-size-md;
+  font-weight: $weight-bold;
+  color: $primary-color;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.noticeContent {
+  font-family: $font-sans;
+  font-size: $font-size-sm;
+  color: $gray-500;
+  line-height: 1.5;
+  margin: 0;
+}
+
+// Stack of Events
+.eventsStack {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.eventCard {
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  transition: all $transition-normal;
+  display: flex;
+  gap: $spacing-md;
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-md;
+    border-color: rgba($secondary-color, 0.2);
+  }
+}
+
+.dateBlock {
+  @include flex-column;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: rgba($primary-color, 0.05);
+  color: $primary-color;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+  border: 1px solid rgba($primary-color, 0.05);
+
+  .day {
+    font-family: $font-serif;
+    font-size: $font-size-xl;
+    font-weight: $weight-bold;
+    line-height: 1;
+  }
+
+  .month {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    font-weight: $weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $secondary-color;
+    margin-top: 2px;
+  }
+}
+
+.eventDetails {
+  @include flex-column;
+  gap: 4px;
+  flex-grow: 1;
+}
+
+.eventTitle {
+  font-family: $font-serif;
+  font-size: $font-size-sm;
+  font-weight: $weight-bold;
+  color: $primary-color;
+  margin: 0;
+  line-height: 1.3;
+  
+  @include sm {
+    font-size: $font-size-md;
+  }
+}
+
+.eventMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  color: $gray-400;
+  
+  .metaItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    
+    svg {
+      color: $secondary-color;
+    }
+  }
+}
+
+.eventDescription {
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  color: $gray-500;
+  line-height: 1.4;
+  margin: 0;
+  margin-top: 2px;
+}

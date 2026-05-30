@@ -1,0 +1,125 @@
+@import '../../styles/theme';
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-sans;
+  font-weight: $weight-medium;
+  border-radius: $radius-lg;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all $transition-normal;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  gap: $spacing-xs;
+  text-align: center;
+  white-space: nowrap;
+
+  // Base sizing
+  &.sm {
+    padding: $spacing-xs $spacing-md;
+    font-size: $font-size-sm;
+    border-radius: $radius-md;
+  }
+
+  &.md {
+    padding: $spacing-sm $spacing-lg;
+    font-size: $font-size-base;
+  }
+
+  &.lg {
+    padding: $spacing-md $spacing-xl;
+    font-size: $font-size-md;
+    border-radius: $radius-xl;
+  }
+
+  &.fullWidth {
+    display: flex;
+    width: 100%;
+  }
+
+  // Variants
+  &.primary {
+    background-color: $primary-color;
+    color: $white;
+    border-color: $primary-color;
+
+    &:hover:not(:disabled) {
+      background-color: $primary-light;
+      border-color: $primary-light;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &.secondary {
+    background-color: $secondary-color;
+    color: $white;
+    border-color: $secondary-color;
+
+    &:hover:not(:disabled) {
+      background-color: $secondary-light;
+      border-color: $secondary-light;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &.emerald {
+    background-color: $accent-color;
+    color: $white;
+    border-color: $accent-color;
+
+    &:hover:not(:disabled) {
+      background-color: $accent-light;
+      border-color: $accent-light;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &.outline {
+    background-color: transparent;
+    color: $primary-color;
+    border-color: $gray-300;
+
+    &:hover:not(:disabled) {
+      background-color: $gray-100;
+      border-color: $primary-color;
+      transform: translateY(-2px);
+    }
+  }
+
+  &.text {
+    background-color: transparent;
+    color: $primary-color;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover:not(:disabled) {
+      color: $secondary-color;
+      transform: translateX(3px);
+    }
+  }
+
+  // States
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  // Micro-animations for details inside button
+  svg {
+    transition: transform $transition-fast;
+  }
+
+  &:hover:not(:disabled) {
+    .arrowIcon {
+      transform: translateX(4px);
+    }
+  }
+}

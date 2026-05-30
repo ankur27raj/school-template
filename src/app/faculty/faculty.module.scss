@@ -1,0 +1,167 @@
+@import '../../styles/theme';
+
+.section {
+  @include section-padding;
+  background-color: $white;
+}
+
+.container {
+  @include container;
+}
+
+// Filter Bar
+.filterBar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-xl;
+  
+  @include md {
+    margin-bottom: $spacing-2xl;
+    gap: $spacing-sm;
+  }
+}
+
+.filterBtn {
+  @include button-reset;
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  font-weight: $weight-semibold;
+  color: $gray-600;
+  border: 1px solid $gray-200;
+  background-color: $white;
+  padding: $spacing-xs $spacing-md;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $primary-color;
+    color: $primary-color;
+  }
+
+  &.active {
+    background-color: $primary-color;
+    color: $white;
+    border-color: $primary-color;
+  }
+  
+  @include sm {
+    font-size: $font-size-sm;
+  }
+}
+
+// Directory Grid
+.facultyGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-xl;
+  }
+}
+
+.facultyCard {
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: all $transition-normal;
+  @include flex-column;
+  align-items: center;
+  text-align: center;
+  padding: $spacing-xl $spacing-md;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+    border-color: rgba($secondary-color, 0.25);
+  }
+}
+
+// Colored Avatar Circle depending on Department
+.avatarCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-round;
+  color: $white;
+  @include flex-center;
+  font-family: $font-sans;
+  font-size: 1.5rem;
+  font-weight: $weight-bold;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-md;
+  border: 3px solid $white;
+  outline: 1px solid $gray-200;
+
+  // Custom coloring by classes
+  &.stem {
+    background: linear-gradient(135deg, $accent-color 0%, $accent-light 100%);
+  }
+
+  &.humanities {
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  }
+
+  &.languages {
+    background: linear-gradient(135deg, $secondary-color 0%, $secondary-light 100%);
+  }
+
+  &.arts {
+    background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+  }
+
+  &.leadership {
+    background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
+  }
+}
+
+.name {
+  font-family: $font-serif;
+  font-size: $font-size-md;
+  font-weight: $weight-bold;
+  color: $primary-color;
+  margin-bottom: 2px;
+}
+
+.role {
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  font-weight: $weight-semibold;
+  color: $secondary-color;
+  margin-bottom: $spacing-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.deptBadge {
+  font-family: $font-sans;
+  font-size: 10px;
+  font-weight: $weight-bold;
+  color: $gray-500;
+  background-color: $gray-100;
+  padding: 2px 8px;
+  border-radius: $radius-xs;
+  margin-bottom: $spacing-sm;
+}
+
+.credentials {
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  color: $gray-400;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 200px;
+}

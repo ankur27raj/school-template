@@ -1,0 +1,209 @@
+@import '../../styles/theme';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: $z-header;
+  transition: all $transition-normal;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+
+  &.scrolled {
+    height: 70px;
+    @include glass(0.9, 12px, rgba(15, 23, 42, 0.08));
+    box-shadow: $shadow-md;
+  }
+
+  &.mobileMenuOpen {
+    @include glass(1, 12px, rgba(15, 23, 42, 0.08));
+  }
+}
+
+.container {
+  @include container;
+  @include flex-between;
+  width: 100%;
+}
+
+.logo {
+  font-family: $font-serif;
+  font-size: $font-size-xl;
+  font-weight: $weight-bold;
+  color: $white; // Default to white on transparent background
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  transition: color $transition-normal;
+
+  span {
+    color: $secondary-light;
+  }
+
+  .scrolled &,
+  .mobileMenuOpen & {
+    color: $primary-color;
+
+    span {
+      color: $secondary-color;
+    }
+  }
+}
+
+.desktopNav {
+  display: none;
+  
+  @include lg {
+    display: block;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: $spacing-lg;
+}
+
+.navLink {
+  font-family: $font-sans;
+  font-size: $font-size-sm;
+  font-weight: $weight-medium;
+  color: $gray-300; // Default light gray on transparent background
+  padding: $spacing-xs 0;
+  position: relative;
+  transition: color $transition-fast;
+
+  &:hover, &.active {
+    color: $white;
+  }
+
+  &.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $secondary-light;
+    border-radius: $radius-round;
+  }
+
+  .scrolled &,
+  .mobileMenuOpen & {
+    color: $gray-600;
+
+    &:hover, &.active {
+      color: $primary-color;
+    }
+
+    &.active::after {
+      background-color: $secondary-color;
+    }
+  }
+}
+
+.navActions {
+  display: none;
+  
+  @include lg {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+}
+
+.menuButton {
+  @include button-reset;
+  @include flex-center;
+  color: $white; // Default white hamburger icon
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+
+  &:hover {
+    background-color: rgba($white, 0.1);
+  }
+
+  .scrolled &,
+  .mobileMenuOpen & {
+    color: $primary-color;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+  }
+
+  @include lg {
+    display: none;
+  }
+}
+
+// Target the outline button inside transparent navbar
+.header:not(.scrolled):not(.mobileMenuOpen) {
+  a button[class*="outline"] {
+    color: $white !important;
+    border-color: rgba($white, 0.4) !important;
+
+    &:hover {
+      background-color: rgba($white, 0.1) !important;
+      border-color: $white !important;
+      color: $white !important;
+    }
+  }
+}
+
+// Mobile Slide-Out Menu Overlay
+.mobileMenu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-color: $white;
+  z-index: $z-modal;
+  padding: $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid $gray-200;
+  
+  @include lg {
+    display: none;
+  }
+}
+
+.mobileNavList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+}
+
+.mobileNavLink {
+  font-family: $font-sans;
+  font-size: $font-size-lg;
+  font-weight: $weight-semibold;
+  color: $gray-700;
+  padding: $spacing-xs 0;
+  display: block;
+  border-bottom: 1px solid $gray-100;
+  transition: color $transition-fast;
+
+  &:hover, &.active {
+    color: $secondary-color;
+    padding-left: $spacing-xs;
+  }
+}
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  margin-top: auto;
+  padding-bottom: $spacing-xl;
+}

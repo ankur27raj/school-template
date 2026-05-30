@@ -1,0 +1,176 @@
+@import '../../styles/theme';
+
+.section {
+  @include section-padding;
+  background-color: $white;
+
+  &.grayBg {
+    background-color: $gray-50;
+  }
+}
+
+.container {
+  @include container;
+}
+
+// Programs section detail list
+.programBlock {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  align-items: center;
+  margin-bottom: $spacing-3xl;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-4xl;
+
+    &:nth-child(even) {
+      .imageWrapper {
+        order: -1;
+      }
+    }
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  @include aspect-ratio(16, 10);
+  border-radius: $radius-2xl;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  background-color: $gray-100;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.programContent {
+  @include flex-column;
+  gap: $spacing-sm;
+
+  .grades {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    font-weight: $weight-bold;
+    color: $secondary-color;
+    background-color: rgba($secondary-color, 0.08);
+    padding: 2px $spacing-sm;
+    border-radius: $radius-sm;
+    align-self: flex-start;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .title {
+    font-family: $font-serif;
+    font-size: $font-size-2xl;
+    font-weight: $weight-bold;
+    color: $primary-color;
+    margin: 0;
+  }
+
+  .desc {
+    font-family: $font-sans;
+    font-size: $font-size-base;
+    color: $gray-600;
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  .detailsList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: $spacing-xs;
+  }
+  
+  .detailItem {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-family: $font-sans;
+    font-size: $font-size-sm;
+    color: $gray-700;
+    
+    svg {
+      color: $accent-color;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// Departments layout
+.departmentsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+  }
+}
+
+.deptCard {
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-xl;
+  padding: $spacing-xl;
+  transition: all $transition-normal;
+  box-shadow: $shadow-sm;
+  @include flex-column;
+  gap: $spacing-sm;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+    border-color: rgba($accent-color, 0.25);
+  }
+
+  .deptHeader {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  .iconWrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-md;
+    background-color: rgba($accent-color, 0.08);
+    color: $accent-color;
+  }
+
+  .deptTitle {
+    font-family: $font-serif;
+    font-size: $font-size-md;
+    font-weight: $weight-bold;
+    color: $primary-color;
+    margin: 0;
+  }
+
+  .deptDesc {
+    font-family: $font-sans;
+    font-size: $font-size-sm;
+    color: $gray-500;
+    line-height: 1.6;
+    margin: 0;
+  }
+}

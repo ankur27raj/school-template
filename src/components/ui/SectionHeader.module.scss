@@ -1,0 +1,81 @@
+@import '../../styles/theme';
+
+.wrapper {
+  margin-bottom: $spacing-xl;
+  max-width: 720px;
+  width: 100%;
+  
+  @include md {
+    margin-bottom: $spacing-2xl;
+  }
+
+  // Alignment classes
+  &.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  &.left {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  &.right {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+  }
+
+  // Dark background theme support
+  &.lightTheme {
+    .badge {
+      background-color: rgba($secondary-color, 0.15);
+      color: $secondary-light;
+    }
+    
+    .title {
+      color: $white;
+    }
+    
+    .description {
+      color: $gray-300;
+    }
+  }
+}
+
+.badge {
+  display: inline-block;
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  font-weight: $weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $secondary-color;
+  background-color: rgba($secondary-color, 0.08);
+  padding: $spacing-xxs $spacing-sm;
+  border-radius: $radius-round;
+  margin-bottom: $spacing-sm;
+}
+
+.title {
+  font-family: $font-serif;
+  color: $primary-color;
+  margin-top: 0;
+  margin-bottom: $spacing-sm;
+  font-weight: $weight-bold;
+  line-height: 1.2;
+}
+
+.description {
+  font-family: $font-sans;
+  color: $gray-500;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  margin-bottom: 0;
+  
+  @include md {
+    font-size: $font-size-md;
+  }
+}

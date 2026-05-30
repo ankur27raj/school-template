@@ -1,0 +1,106 @@
+@import 'variables';
+@import 'breakpoints';
+
+// Flexbox centering mixin
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Container helper
+@mixin container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+}
+
+// Glassmorphism effect
+@mixin glass($bg-opacity: 0.7, $blur: 10px, $border-color: rgba(255, 255, 255, 0.1)) {
+  background: rgba($white, $bg-opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid $border-color;
+}
+
+@mixin glass-dark($bg-opacity: 0.7, $blur: 10px, $border-color: rgba(255, 255, 255, 0.05)) {
+  background: rgba($primary-color, $bg-opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid $border-color;
+}
+
+// Text truncation (single line)
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Text clamping (multiple lines)
+@mixin line-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Section spacing
+@mixin section-padding {
+  padding-top: $spacing-3xl;
+  padding-bottom: $spacing-3xl;
+  
+  @include md {
+    padding-top: $spacing-5xl;
+    padding-bottom: $spacing-5xl;
+  }
+}
+
+// Button reset
+@mixin button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+}
+
+// Aspect ratio utility
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    padding-top: ($height / $width) * 100%;
+  }
+  & > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Focus ring style for accessibility
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $secondary-color;
+    outline-offset: 4px;
+  }
+}

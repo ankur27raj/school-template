@@ -1,0 +1,121 @@
+@import '../../styles/theme';
+
+.programs {
+  @include section-padding;
+  background-color: $white;
+}
+
+.container {
+  @include container;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-lg;
+  }
+}
+
+.card {
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: all $transition-normal;
+  @include flex-column;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-lg;
+    border-color: rgba($secondary-color, 0.2);
+
+    .image {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  @include aspect-ratio(16, 10);
+  background-color: $gray-100;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform $transition-slow;
+}
+
+.cardContent {
+  padding: $spacing-lg;
+  @include flex-column;
+  flex-grow: 1;
+  gap: $spacing-sm;
+}
+
+.gradesBadge {
+  display: inline-block;
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  font-weight: $weight-semibold;
+  color: $secondary-color;
+  background-color: rgba($secondary-color, 0.05);
+  padding: 2px $spacing-sm;
+  border-radius: $radius-sm;
+  align-self: flex-start;
+}
+
+.cardTitle {
+  font-family: $font-serif;
+  font-size: $font-size-md;
+  font-weight: $weight-bold;
+  color: $primary-color;
+  margin: 0;
+}
+
+.cardDescription {
+  font-family: $font-sans;
+  font-size: $font-size-sm;
+  color: $gray-500;
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.cardLink {
+  font-family: $font-sans;
+  font-size: $font-size-sm;
+  font-weight: $weight-semibold;
+  color: $primary-color;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  transition: color $transition-fast;
+  margin-top: $spacing-xs;
+
+  svg {
+    transition: transform $transition-fast;
+  }
+
+  &:hover {
+    color: $secondary-color;
+
+    svg {
+      transform: translateX(4px);
+    }
+  }
+}

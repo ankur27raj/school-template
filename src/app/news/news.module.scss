@@ -1,0 +1,259 @@
+@import '../../styles/theme';
+
+.section {
+  @include section-padding;
+  background-color: $white;
+}
+
+.container {
+  @include container;
+}
+
+// Tabbed Selectors
+.tabBar {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-xl;
+  border-bottom: 1px solid $gray-200;
+  padding-bottom: $spacing-sm;
+
+  @include md {
+    margin-bottom: $spacing-2xl;
+    gap: $spacing-sm;
+  }
+}
+
+.tabBtn {
+  @include button-reset;
+  font-family: $font-sans;
+  font-size: $font-size-sm;
+  font-weight: $weight-semibold;
+  color: $gray-500;
+  padding: $spacing-xs $spacing-lg;
+  position: relative;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  &.active {
+    color: $secondary-color;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -9px; // Align exactly with tab bar border
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $secondary-color;
+      border-radius: $radius-round;
+    }
+  }
+  
+  @include md {
+    font-size: $font-size-base;
+  }
+}
+
+// Layout stacks
+.contentStack {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  @include flex-column;
+  gap: $spacing-lg;
+}
+
+// Notices Grid & Card
+.noticesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.noticeCard {
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-xl;
+  padding: $spacing-xl;
+  box-shadow: $shadow-sm;
+  transition: all $transition-normal;
+  @include flex-column;
+  gap: $spacing-sm;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-md;
+    border-color: rgba($primary-color, 0.15);
+  }
+
+  &.important {
+    border-left: 4px solid $error;
+  }
+}
+
+.noticeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+
+  .date {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    color: $gray-400;
+  }
+
+  .badge {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    font-weight: $weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px $spacing-xs;
+    border-radius: $radius-xs;
+  }
+
+  .categoryBadge {
+    @extend .badge;
+    color: $secondary-color;
+    background-color: rgba($secondary-color, 0.05);
+  }
+
+  .importantBadge {
+    @extend .badge;
+    color: $error;
+    background-color: rgba($error, 0.05);
+  }
+}
+
+.noticeTitle {
+  font-family: $font-serif;
+  font-size: $font-size-md;
+  font-weight: $weight-bold;
+  color: $primary-color;
+  margin: 0;
+  line-height: 1.4;
+
+  @include md {
+    font-size: $font-size-lg;
+  }
+}
+
+.noticeBody {
+  font-family: $font-sans;
+  font-size: $font-size-base;
+  color: $gray-600;
+  line-height: 1.6;
+  margin: 0;
+}
+
+// Events Timeline & Card
+.eventsTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.eventCard {
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-xl;
+  padding: $spacing-lg;
+  box-shadow: $shadow-sm;
+  transition: all $transition-normal;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-md;
+    border-color: rgba($secondary-color, 0.2);
+  }
+
+  @include sm {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.dateBlock {
+  @include flex-column;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background-color: rgba($primary-color, 0.05);
+  border: 1px solid rgba($primary-color, 0.05);
+  color: $primary-color;
+  border-radius: $radius-lg;
+  flex-shrink: 0;
+
+  .day {
+    font-family: $font-serif;
+    font-size: $font-size-xl;
+    font-weight: $weight-bold;
+    line-height: 1;
+  }
+
+  .month {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    font-weight: $weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $secondary-color;
+    margin-top: 4px;
+  }
+}
+
+.eventDetails {
+  @include flex-column;
+  gap: $spacing-xs;
+  flex-grow: 1;
+}
+
+.eventTitle {
+  font-family: $font-serif;
+  font-size: $font-size-md;
+  font-weight: $weight-bold;
+  color: $primary-color;
+  margin: 0;
+  line-height: 1.3;
+
+  @include md {
+    font-size: $font-size-lg;
+  }
+}
+
+.eventMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  color: $gray-400;
+
+  .metaItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    svg {
+      color: $secondary-color;
+    }
+  }
+}
+
+.eventDesc {
+  font-family: $font-sans;
+  font-size: $font-size-sm;
+  color: $gray-500;
+  line-height: 1.5;
+  margin: 0;
+}

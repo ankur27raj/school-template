@@ -1,0 +1,162 @@
+@import '../../styles/theme';
+
+.testimonials {
+  @include section-padding;
+  background-color: $white;
+}
+
+.container {
+  @include container;
+  max-width: 960px; // slightly narrower for reading focus
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  margin-top: $spacing-lg;
+}
+
+.cardWrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+}
+
+.testimonialCard {
+  background-color: $gray-50;
+  border: 1px solid $gray-200;
+  border-radius: $radius-2xl;
+  padding: $spacing-xl $spacing-lg;
+  width: 100%;
+  box-shadow: $shadow-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: $spacing-md;
+
+  @include md {
+    padding: $spacing-2xl $spacing-xl;
+  }
+}
+
+.quoteIcon {
+  color: $secondary-color;
+  opacity: 0.2;
+}
+
+.quoteText {
+  font-family: $font-serif;
+  font-size: $font-size-md;
+  font-style: italic;
+  color: $primary-color;
+  line-height: 1.6;
+  margin: 0;
+  
+  @include md {
+    font-size: $font-size-lg;
+  }
+}
+
+.authorInfo {
+  @include flex-column;
+  align-items: center;
+  gap: 2px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: $radius-round;
+  background-color: $primary-color;
+  color: $white;
+  @include flex-center;
+  font-family: $font-sans;
+  font-size: $font-size-lg;
+  font-weight: $weight-bold;
+  border: 3px solid $white;
+  box-shadow: $shadow-md;
+  margin-bottom: $spacing-xs;
+}
+
+.name {
+  font-family: $font-serif;
+  font-size: $font-size-base;
+  font-weight: $weight-bold;
+  color: $primary-color;
+}
+
+.role {
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  color: $gray-500;
+}
+
+// Carousel Controls
+.controls {
+  @include flex-between;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(100% + 40px);
+  left: -20px;
+  pointer-events: none;
+  z-index: 10;
+
+  @include respond-max($breakpoint-md) {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: $spacing-lg;
+    justify-content: center;
+    gap: $spacing-lg;
+  }
+}
+
+.controlBtn {
+  @include button-reset;
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-round;
+  background-color: $white;
+  border: 1px solid $gray-200;
+  color: $primary-color;
+  box-shadow: $shadow-md;
+  pointer-events: auto;
+  transition: all $transition-fast;
+
+  &:hover {
+    background-color: $primary-color;
+    color: $white;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-xl;
+}
+
+.dot {
+  @include button-reset;
+  width: 10px;
+  height: 10px;
+  border-radius: $radius-round;
+  background-color: $gray-300;
+  transition: all $transition-fast;
+
+  &.active {
+    background-color: $secondary-color;
+    width: 24px;
+  }
+}

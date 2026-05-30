@@ -1,0 +1,237 @@
+@import '../../styles/theme';
+
+.section {
+  @include section-padding;
+  background-color: $white;
+
+  &.grayBg {
+    background-color: $gray-50;
+  }
+}
+
+.container {
+  @include container;
+}
+
+// Vision & Mission Grid
+.mvGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mvCard {
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-2xl;
+  padding: $spacing-2xl $spacing-lg;
+  box-shadow: $shadow-md;
+  transition: all $transition-normal;
+  @include flex-column;
+  gap: $spacing-md;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+    border-color: rgba($secondary-color, 0.25);
+  }
+
+  .iconWrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: $radius-xl;
+    background-color: rgba($secondary-color, 0.08);
+    color: $secondary-color;
+  }
+
+  .cardTitle {
+    font-family: $font-serif;
+    font-size: $font-size-xl;
+    font-weight: $weight-bold;
+    color: $primary-color;
+    margin: 0;
+  }
+
+  .cardText {
+    font-family: $font-sans;
+    font-size: $font-size-base;
+    color: $gray-500;
+    line-height: 1.7;
+    margin: 0;
+  }
+}
+
+// History split layout
+.historySplit {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+  align-items: center;
+
+  @include lg {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: $spacing-4xl;
+  }
+}
+
+.historyText {
+  @include flex-column;
+  gap: $spacing-md;
+
+  p {
+    font-family: $font-sans;
+    font-size: $font-size-base;
+    color: $gray-600;
+    line-height: 1.7;
+  }
+}
+
+.historyTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  position: relative;
+  padding-left: $spacing-xl;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    width: 2px;
+    height: calc(100% - 10px);
+    background-color: $gray-200;
+  }
+}
+
+.timelineItem {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: -20px;
+    width: 16px;
+    height: 16px;
+    border-radius: $radius-round;
+    background-color: $white;
+    border: 3px solid $secondary-color;
+    z-index: 2;
+    transition: background-color $transition-fast;
+  }
+
+  &:hover::before {
+    background-color: $secondary-color;
+  }
+
+  .year {
+    font-family: $font-serif;
+    font-size: $font-size-md;
+    font-weight: $weight-bold;
+    color: $secondary-color;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .itemTitle {
+    font-family: $font-sans;
+    font-size: $font-size-sm;
+    font-weight: $weight-bold;
+    color: $primary-color;
+    margin-bottom: 2px;
+  }
+
+  .itemDesc {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    color: $gray-500;
+    line-height: 1.4;
+  }
+}
+
+// Leadership Grid
+.leadershipGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.leaderCard {
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: all $transition-normal;
+  @include flex-column;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+    border-color: rgba($primary-color, 0.15);
+
+    .image {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  @include aspect-ratio(1, 1); // Square profile photo
+  background-color: $gray-100;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform $transition-slow;
+}
+
+.leaderInfo {
+  padding: $spacing-lg;
+  text-align: center;
+  @include flex-column;
+  gap: $spacing-xxs;
+
+  .name {
+    font-family: $font-serif;
+    font-size: $font-size-md;
+    font-weight: $weight-bold;
+    color: $primary-color;
+  }
+
+  .role {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    font-weight: $weight-semibold;
+    color: $secondary-color;
+  }
+
+  .credentials {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    color: $gray-400;
+    line-height: 1.4;
+    margin-top: $spacing-xs;
+  }
+}

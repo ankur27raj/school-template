@@ -1,0 +1,249 @@
+@import '../../styles/theme';
+
+.section {
+  @include section-padding;
+  background-color: $white;
+
+  &.grayBg {
+    background-color: $gray-50;
+  }
+}
+
+.container {
+  @include container;
+}
+
+// Admission Process Steps
+.processGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  position: relative;
+  margin-top: $spacing-xl;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $spacing-lg;
+  }
+}
+
+.processCard {
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-xl;
+  padding: $spacing-xl $spacing-lg;
+  text-align: center;
+  position: relative;
+  @include flex-column;
+  align-items: center;
+  gap: $spacing-sm;
+  box-shadow: $shadow-sm;
+  transition: all $transition-normal;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+    border-color: rgba($secondary-color, 0.25);
+  }
+
+  .stepNum {
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-round;
+    background-color: rgba($secondary-color, 0.08);
+    color: $secondary-color;
+    @include flex-center;
+    font-family: $font-serif;
+    font-size: $font-size-md;
+    font-weight: $weight-bold;
+  }
+
+  .stepTitle {
+    font-family: $font-serif;
+    font-size: $font-size-md;
+    font-weight: $weight-bold;
+    color: $primary-color;
+    margin: 0;
+  }
+
+  .stepDesc {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    color: $gray-500;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+// Split details: Documents and Eligibility
+.detailsSplit {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-4xl;
+  }
+}
+
+.detailsCol {
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-2xl;
+  padding: $spacing-2xl $spacing-lg;
+  box-shadow: $shadow-md;
+  @include flex-column;
+  gap: $spacing-md;
+
+  .heading {
+    font-family: $font-serif;
+    font-size: $font-size-lg;
+    color: $primary-color;
+    border-bottom: 2px solid $gray-100;
+    padding-bottom: $spacing-xs;
+    margin-bottom: $spacing-xs;
+  }
+
+  .list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  .listItem {
+    display: flex;
+    gap: $spacing-sm;
+    font-family: $font-sans;
+    font-size: $font-size-sm;
+    color: $gray-600;
+    line-height: 1.5;
+
+    svg {
+      color: $accent-color;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    strong {
+      color: $primary-color;
+    }
+  }
+}
+
+// Inquiry Form Card
+.formWrapper {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-2xl;
+  padding: $spacing-xl;
+  box-shadow: $shadow-lg;
+
+  @include md {
+    padding: $spacing-2xl;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  font-weight: $weight-semibold;
+  color: $gray-700;
+}
+
+.input,
+.select,
+.textarea {
+  font-family: $font-sans;
+  font-size: $font-size-sm;
+  color: $primary-color;
+  background-color: $gray-50;
+  border: 1px solid $gray-200;
+  border-radius: $radius-md;
+  padding: $spacing-sm;
+  transition: all $transition-fast;
+  width: 100%;
+  outline: none;
+
+  &:focus {
+    border-color: $secondary-color;
+    background-color: $white;
+    box-shadow: 0 0 0 3px rgba($secondary-color, 0.08);
+  }
+
+  &.errorBorder {
+    border-color: $error;
+    
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($error, 0.08);
+    }
+  }
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.errorText {
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  color: $error;
+  margin: 0;
+}
+
+// Success State
+.successCard {
+  text-align: center;
+  @include flex-column;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-xl 0;
+
+  .successIcon {
+    width: 64px;
+    height: 64px;
+    border-radius: $radius-round;
+    background-color: rgba($success, 0.08);
+    color: $success;
+    @include flex-center;
+    margin-bottom: $spacing-xs;
+  }
+
+  .successTitle {
+    font-family: $font-serif;
+    font-size: $font-size-xl;
+    font-weight: $weight-bold;
+    color: $primary-color;
+    margin: 0;
+  }
+
+  .successDesc {
+    font-family: $font-sans;
+    font-size: $font-size-base;
+    color: $gray-500;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 440px;
+  }
+}

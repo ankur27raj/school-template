@@ -1,0 +1,157 @@
+@import '../../styles/theme';
+
+.overview {
+  @include section-padding;
+  background-color: $white;
+}
+
+.container {
+  @include container;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+  align-items: center;
+
+  @include lg {
+    grid-template-columns: 1fr 1.2fr;
+    gap: $spacing-4xl;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+
+  // Premium offset border frame effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid $secondary-color;
+    border-radius: $radius-lg;
+    z-index: $z-base;
+    pointer-events: none;
+    transition: transform $transition-normal;
+  }
+
+  &:hover::before {
+    transform: translate(-5px, 5px);
+  }
+}
+
+.imageCard {
+  position: relative;
+  z-index: 2;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  background-color: $gray-100;
+  @include aspect-ratio(4, 5);
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.imageCaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: $spacing-md;
+  background: linear-gradient(to top, rgba($primary-dark, 0.9) 0%, rgba($primary-dark, 0) 100%);
+  color: $white;
+  z-index: 3;
+
+  .name {
+    font-family: $font-serif;
+    font-size: $font-size-md;
+    font-weight: $weight-bold;
+    margin-bottom: 2px;
+  }
+
+  .role {
+    font-family: $font-sans;
+    font-size: $font-size-xs;
+    color: $gray-300;
+  }
+}
+
+.content {
+  @include flex-column;
+  gap: $spacing-md;
+}
+
+.welcomeText {
+  font-family: $font-sans;
+  font-size: $font-size-xs;
+  font-weight: $weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $secondary-color;
+  margin-bottom: -$spacing-xs;
+}
+
+.title {
+  font-family: $font-serif;
+  color: $primary-color;
+  font-size: $font-size-2xl;
+  line-height: 1.2;
+  margin-bottom: $spacing-xs;
+
+  @include md {
+    font-size: $font-size-3xl;
+  }
+}
+
+.intro {
+  font-family: $font-sans;
+  font-size: $font-size-base;
+  color: $gray-600;
+  line-height: 1.7;
+}
+
+.quoteCard {
+  position: relative;
+  background-color: $gray-50;
+  border-left: 4px solid $secondary-color;
+  padding: $spacing-md $spacing-lg;
+  margin: $spacing-sm 0;
+  border-radius: 0 $radius-lg $radius-lg 0;
+  box-shadow: $shadow-sm;
+
+  .quoteText {
+    font-family: $font-serif;
+    font-size: $font-size-base;
+    font-style: italic;
+    color: $primary-color;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+  }
+
+  &::after {
+    content: '“';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-family: $font-serif;
+    font-size: 5rem;
+    color: rgba($secondary-color, 0.08);
+    line-height: 1;
+    z-index: 1;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-sm;
+}

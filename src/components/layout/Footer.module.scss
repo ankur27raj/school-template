@@ -1,0 +1,160 @@
+@import '../../styles/theme';
+
+.footer {
+  background-color: $primary-dark;
+  color: $gray-300;
+  padding-top: $spacing-3xl;
+  border-top: 1px solid rgba($white, 0.05);
+
+  @include md {
+    padding-top: $spacing-4xl;
+  }
+}
+
+.top {
+  @include container;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  padding-bottom: $spacing-2xl;
+  border-bottom: 1px solid rgba($white, 0.05);
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: $spacing-lg;
+  }
+}
+
+.logoCol {
+  @include flex-column;
+  gap: $spacing-md;
+
+  .logo {
+    font-family: $font-serif;
+    font-size: $font-size-xl;
+    font-weight: $weight-bold;
+    color: $white;
+    display: inline-block;
+
+    span {
+      color: $secondary-color;
+    }
+  }
+
+  .tagline {
+    font-family: $font-sans;
+    font-size: $font-size-sm;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+}
+
+.socials {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-xs;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-round;
+  background-color: rgba($white, 0.05);
+  color: $gray-300;
+  transition: all $transition-fast;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: $white;
+    transform: translateY(-3px);
+  }
+}
+
+.linksCol {
+  @include flex-column;
+  gap: $spacing-md;
+
+  .heading {
+    font-family: $font-sans;
+    font-size: $font-size-sm;
+    font-weight: $weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $white;
+    margin-bottom: $spacing-xs;
+  }
+
+  .list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  .link {
+    font-family: $font-sans;
+    font-size: $font-size-sm;
+    color: $gray-400;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $white;
+      padding-left: $spacing-xxs;
+    }
+  }
+}
+
+.contactCol {
+  @extend .linksCol;
+
+  .contactItem {
+    display: flex;
+    gap: $spacing-sm;
+    font-size: $font-size-sm;
+    line-height: 1.5;
+    color: $gray-400;
+
+    svg {
+      color: $secondary-color;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+  }
+}
+
+.bottom {
+  @include container;
+  padding: $spacing-lg 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: $font-size-xs;
+  color: $gray-500;
+
+  @include md {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $spacing-lg $container-padding;
+  }
+}
+
+.bottomLinks {
+  display: flex;
+  gap: $spacing-md;
+
+  .bottomLink {
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
